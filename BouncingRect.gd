@@ -1,7 +1,7 @@
 extends ColorRect
 
 var velocity = Vector2(200, 150)  # Initial speed
-var speed_multiplier = 1.1  # Speed increase multiplier
+var speed_multiplier = 1.001  # Speed increase multiplier
 
 func _ready():
 	randomize()  # Ensure randomness for initial position
