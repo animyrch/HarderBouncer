@@ -1,7 +1,7 @@
 extends ColorRect
 
 var velocity = Vector2(200, 150)  # Initial speed
-var speed_multiplier = 1.1  # Speed increase multiplier
+var speed_multiplier = 1.01  # Speed increase multiplier
 
 func _ready():
 	randomize()  # Ensure randomness for initial position
@@ -19,8 +19,16 @@ func _process(delta):
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.position.x >= position.x and event.position.x <= position.x + get_rect().size.x and event.position.y >= position.y and event.position.y <= position.y + get_rect().size.y:
-			velocity *= speed_multiplier  # Increase speed when clicked
-			change_color()  # Change color when clicked
-
+			change_color()
+			change_speed()
+			change_direction()
+			
 func change_color():
 	modulate = Color(randf(), randf(), randf(), 1.0)  # Set to a random color
+
+func change_direction():
+	var rand_angle = rand_range(-PI, PI)  # Random angle in radians
+	velocity = Vector2(cos(rand_angle), sin(rand_angle)) * velocity.length()  # Set velocity in random direction
+
+func change_speed():
+	velocity *= speed_multiplier  # Increase speed when clicked
