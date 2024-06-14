@@ -1,2 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+HarderBouncer.pck
+HarderBouncer.dmg
+HarderBouncer.console.pck
+HarderBouncer.console.exe
+.DS_Store
